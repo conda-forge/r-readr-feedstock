@@ -1,4 +1,4 @@
-{% set version = '1.1.0' %}
+{% set version = '1.1.1' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,7 +12,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/readr_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/readr/readr_{{ version }}.tar.gz
-  sha256: 47633f022c7b5398e7c3d62493bc06823034e608d119ae1592f6e05ddb1befbc
+  sha256: 1a29b99009a06f2cee18d08bc6201fd4985b6d45c76cefca65084dcc1a2f7cb3
 
 build:
   number: 0

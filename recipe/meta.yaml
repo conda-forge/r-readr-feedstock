@@ -1,5 +1,4 @@
 {% set version = '1.1.1' %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,26 +9,28 @@ package:
 source:
   fn: readr_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/readr_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/readr/readr_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/readr_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/readr/readr_{{ version }}.tar.gz
   sha256: 1a29b99009a06f2cee18d08bc6201fd4985b6d45c76cefca65084dcc1a2f7cb3
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 2
   skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('cxx') }}        # [unix]
-    - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('cxx') }}      # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
     - r-bh
@@ -37,9 +38,9 @@ requirements:
     - r-rcpp >=0.12.0.5
     - r-hms
     - r-tibble
-
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
     - r-bh
     - r-r6
     - r-rcpp >=0.12.0.5
@@ -48,7 +49,7 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('readr')"  # [not win]
+    - $R -e "library('readr')"           # [not win]
     - "\"%R%\" -e \"library('readr')\""  # [win]
 
 about:
@@ -58,8 +59,13 @@ about:
     (like 'csv', 'tsv', and 'fwf'). It is designed to flexibly parse many types of data
     found in the wild, while still cleanly failing when data unexpectedly changes.
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer

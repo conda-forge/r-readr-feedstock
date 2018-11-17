@@ -15,7 +15,7 @@ source:
 
 build:
   merge_build_host: True  # [win]
-  number: 2
+  number: 1002
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -59,8 +59,7 @@ about:
     (like 'csv', 'tsv', and 'fwf'). It is designed to flexibly parse many types of data
     found in the wild, while still cleanly failing when data unexpectedly changes.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:

@@ -15,7 +15,7 @@ source:
 
 build:
   merge_build_host: True  # [win]
-  number: 1001
+  number: 1002
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -50,7 +50,8 @@ requirements:
     - r-r6
     - r-clipr
     - r-crayon    
-    - r-bh
+    # BH is the header-only part of Boost and thus a compile-time requirement only
+    # - r-bh
 
 test:
   commands:

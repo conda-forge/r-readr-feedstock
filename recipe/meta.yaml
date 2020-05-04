@@ -62,7 +62,7 @@ test:
 
 about:
   home: http://readr.tidyverse.org, https://github.com/tidyverse/readr
-  license: GPL (>= 2)
+  license: GPL-2.0-or-later
   summary: The goal of 'readr' is to provide a fast and friendly way to read rectangular data
     (like 'csv', 'tsv', and 'fwf'). It is designed to flexibly parse many types of data
     found in the wild, while still cleanly failing when data unexpectedly changes.

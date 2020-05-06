@@ -17,7 +17,7 @@ source:
 
 build:
   merge_build_host: True  # [win]
-  number: 1003
+  number: 1004
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -25,10 +25,10 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('cxx') }}      # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('m2w64_cxx') }}        # [win]
+    - {{ compiler('c') }}          # [not win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
@@ -52,8 +52,6 @@ requirements:
     - r-r6
     - r-clipr
     - r-crayon    
-    # BH is the header-only part of Boost and thus a compile-time requirement only
-    # - r-bh
 
 test:
   commands:

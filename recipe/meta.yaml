@@ -11,8 +11,6 @@ source:
     - {{ cran_mirror }}/src/contrib/readr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/readr/readr_{{ version }}.tar.gz
   sha256: 02b1188aab8b2bc3f3d2bba5b946bd299610e87f3f7660c88b60b444093c46b9
-  patches:
-    - e08d1324fa83c94c3cbaa2d64e4f77e8ba98203b.patch  # [win]
 
 build:
   merge_build_host: true  # [win]

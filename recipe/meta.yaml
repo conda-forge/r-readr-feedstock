@@ -7,7 +7,6 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: readr_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/readr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/readr/readr_{{ version }}.tar.gz
@@ -18,17 +17,16 @@ source:
 build:
   merge_build_host: true  # [win]
   number: 0
-  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}          # [not win]
-    - {{ compiler('cxx') }}        # [not win]
-    - {{ compiler('m2w64_c') }}    # [win]
-    - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
@@ -36,22 +34,28 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
-    - r-rcpp >=0.12.0.5
-    - r-tibble
-    - r-hms >=0.4.1
-    - r-r6
-    - r-clipr
-    - r-crayon
     - r-bh
+    - r-r6
+    - r-cli
+    - r-clipr
+    - r-cpp11
+    - r-crayon
+    - r-hms >=0.4.1
+    - r-lifecycle
+    - r-rlang
+    - r-tibble
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
-    - r-rcpp >=0.12.0.5
-    - r-tibble
-    - r-hms >=0.4.1
     - r-r6
+    - r-cli
     - r-clipr
+    - r-cpp11
     - r-crayon
+    - r-hms >=0.4.1
+    - r-lifecycle
+    - r-rlang
+    - r-tibble
 
 test:
   commands:
@@ -63,13 +67,9 @@ about:
   license: GPL-2.0-or-later
   summary: The goal of 'readr' is to provide a fast and friendly way to read rectangular data (like 'csv', 'tsv', and 'fwf'). It is designed to flexibly parse many types of data found in the wild, while still cleanly failing when data unexpectedly changes.
   license_family: GPL3
-  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer

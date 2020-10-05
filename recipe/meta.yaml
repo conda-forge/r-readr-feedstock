@@ -1,4 +1,4 @@
-{% set version = '1.3.1' %}
+{% set version = "1.4.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -11,13 +11,13 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/readr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/readr/readr_{{ version }}.tar.gz
-  sha256: 33f94de39bb7f2a342fbb2bd4e5afcfec08798eac39672ee18042ac0b349e4f3
+  sha256: 02b1188aab8b2bc3f3d2bba5b946bd299610e87f3f7660c88b60b444093c46b9
   patches:
     - e08d1324fa83c94c3cbaa2d64e4f77e8ba98203b.patch  # [win]
 
 build:
-  merge_build_host: True  # [win]
-  number: 1004
+  merge_build_host: true  # [win]
+  number: 0
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -51,7 +51,7 @@ requirements:
     - r-hms >=0.4.1
     - r-r6
     - r-clipr
-    - r-crayon    
+    - r-crayon
 
 test:
   commands:
@@ -61,11 +61,9 @@ test:
 about:
   home: http://readr.tidyverse.org, https://github.com/tidyverse/readr
   license: GPL-2.0-or-later
-  summary: The goal of 'readr' is to provide a fast and friendly way to read rectangular data
-    (like 'csv', 'tsv', and 'fwf'). It is designed to flexibly parse many types of data
-    found in the wild, while still cleanly failing when data unexpectedly changes.
+  summary: The goal of 'readr' is to provide a fast and friendly way to read rectangular data (like 'csv', 'tsv', and 'fwf'). It is designed to flexibly parse many types of data found in the wild, while still cleanly failing when data unexpectedly changes.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:

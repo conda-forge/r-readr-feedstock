@@ -3,7 +3,7 @@ About r-readr
 
 Home: http://readr.tidyverse.org, https://github.com/tidyverse/readr
 
-Package license: GPL-2.0-or-later
+Package license: MIT
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-readr-feedstock/blob/master/LICENSE.txt)
 

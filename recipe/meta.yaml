@@ -42,6 +42,8 @@ requirements:
     - r-lifecycle
     - r-rlang
     - r-tibble
+    - r-tzdb
+    - r-vroom
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
@@ -54,6 +56,8 @@ requirements:
     - r-lifecycle
     - r-rlang
     - r-tibble
+    - r-tzdb
+    - r-vroom
 
 test:
   commands:

@@ -21,6 +21,18 @@ build:
 
 requirements:
   build:
+    - cross-r-base {{ r_base }}  # [build_platform != target_platform]
+    - r-tibble                   # [build_platform != target_platform]
+    - r-cpp11                    # [build_platform != target_platform]
+    - r-lifecycle                # [build_platform != target_platform]
+    - r-r6                       # [build_platform != target_platform]
+    - r-rlang                    # [build_platform != target_platform]
+    - r-tzdb                     # [build_platform != target_platform]
+    - r-clipr                    # [build_platform != target_platform]
+    - r-crayon                   # [build_platform != target_platform]
+    - r-hms                      # [build_platform != target_platform]
+    - r-cli                      # [build_platform != target_platform]
+    - r-vroom                    # [build_platform != target_platform]
     - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ compiler('cxx') }}            # [not win]

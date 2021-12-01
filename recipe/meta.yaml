@@ -1,4 +1,4 @@
-{% set version = "2.1.0" %}
+{% set version = "2.1.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/readr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/readr/readr_{{ version }}.tar.gz
-  sha256: a07ec3670299e16cfdb98b4b91e228a91de74a385c31cadda96c179e26f1a70d
+  sha256: 03937918a547e3a1587295f5e5f8c7f6865a4d04047d2b20c8d0f0701f1cbc84
 
 build:
   merge_build_host: true  # [win]
